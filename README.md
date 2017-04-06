@@ -1,5 +1,5 @@
-#My Linux conf
+# My Linux conf
 
-Currently support Debian and Ubuntu
+Currently support **Debian** and **Ubuntu**
 
 Just run `setup.sh` to get it done ;)
