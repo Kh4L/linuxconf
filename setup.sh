@@ -2,9 +2,10 @@
 
 set -ue
 
-BLUE='\e[34m'
 RED='\e[31m'
 GREEN='\e[32m'
+YELLOW='\e[33m'
+BLUE='\e[34m'
 
 RESET='\e[39m'
 
@@ -36,8 +37,10 @@ function vimSetup
 	mkdir -p ~/.vim/colors
 	cp files/molokai.vim ~/.vim/colors
 
-	mkdir -p ~/.vim/bundle
-	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
+		mkdir -p ~/.vim/bundle;
+		git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	fi
 
 	cp files/vimrc ~/.vimrc
 
@@ -49,7 +52,8 @@ function vimSetup
 function i3Setup
 {
 	if isInstalled i3; then
-		return 1
+		print $YELLOW "i3 already installed"
+		return 0
 	fi
 
 	if [ `cat /proc/version | grep -i Ubuntu | wc -l` != 0 ]; then
@@ -66,11 +70,22 @@ function i3Setup
 	print $GREEN "i3 ready"
 }
 
+function pedaSetup
+{
+	if [ ! -d ~/peda ]; then
+		git clone https://github.com/longld/peda.git ~/peda;
+		mkdir -p ~/.gdbinit;
+		echo "source ~/peda/peda.py" >> ~/.gdbinit;
+	else
+		print $YELLOW "GDB PEDA already installed",
+	fi
+}
+
 ####### Setup begin #######
 sudo apt-get update
 
 packageList=''
-print $BLUE "Installing packages"
+print $BLUE "Installing packages..."
 
 for package in `cat packages.txt`; do
 	if checkPackage "$package"; then
@@ -80,16 +95,20 @@ for package in `cat packages.txt`; do
 	fi
 done
 sudo apt-get install -y -m $packageList
+print $GREEN "Packages installed"
 
-print $BLUE "Installing vim"
+
+print $BLUE "Installing vim..."
 vimSetup
 
-print $BLUE "Installing Oh My Zsh"
+print $BLUE "Installing Oh My Zsh..."
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 sudo chsh -s `which zsh`
 
-
-print $BLUE "Installing i3"
+print $BLUE "Installing i3..."
 i3Setup
+
+print $BLUE "Installing GDB PEDA..."
+pedaSetup
 
 print $GREEN "Setup done! Reboot to be ready :)"
