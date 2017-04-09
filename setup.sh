@@ -35,6 +35,7 @@ function isInstalled #package
 function vimSetup
 {
 	mkdir -p ~/.vim/colors
+	mkdir -p ~/tmp
 	cp files/molokai.vim ~/.vim/colors
 
 	if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
