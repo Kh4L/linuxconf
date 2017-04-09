@@ -1,0 +1,15 @@
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec brightness + 30 # increase screen brightness
+bindsym XF86MonBrightnessDown exec brightness - 30 # decrease screen brightness
+
+#Set background image
+exec feh --bg-scale ~/Pictures/suntree.jpg
+
+#Change keyboard laout map and add Alt+Shift shortcut
+exec setxkbmap -layout us,fr
+exec setxkbmap -option 'grp:alt_shift_toggle'
