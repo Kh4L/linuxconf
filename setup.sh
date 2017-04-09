@@ -73,7 +73,6 @@ function pedaSetup
 {
 	if [ ! -d ~/peda ]; then
 		git clone https://github.com/longld/peda.git ~/peda;
-		mkdir -p ~/.gdbinit;
 		echo "source ~/peda/peda.py" >> ~/.gdbinit;
 	else
 		print $YELLOW "GDB PEDA already installed",
