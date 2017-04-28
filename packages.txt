@@ -1,1 +1,1 @@
-python-dev python3-dev dpkg dpkg-dev libncurses5-dev curl gcc gdb python-pip pkg-config valgrind python git nmap vim sudo zsh chromium-browser wireshark
+python-dev python3-dev dpkg dpkg-dev libncurses5-dev curl gcc gdb python-pip pkg-config valgrind python git nmap vim sudo zsh chromium-browser wireshark ruby ruby-dev
