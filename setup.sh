@@ -103,8 +103,8 @@ print $BLUE "Installing Oh My Zsh..."
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 sudo chsh -s `which zsh`
 
-print $BLUE "Installing i3..."
-i3Setup
+#print $BLUE "Installing i3..."
+#i3Setup
 
 print $BLUE "Installing GDB PEDA..."
 pedaSetup
