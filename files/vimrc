@@ -50,6 +50,9 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum' 
 
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
+
 let g:solarized_termcolors = 256
 syntax enable
 set background=dark
